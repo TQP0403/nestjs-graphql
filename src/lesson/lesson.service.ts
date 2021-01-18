@@ -14,7 +14,7 @@ export class LessonService {
 
   async assignStudentsToLesson(
     assignStudentsToLessonInput: AssignStudentsToLessonInput,
-  ) {
+  ): Promise<Lesson> {
     const { lessonId, studentIds } = assignStudentsToLessonInput;
     const lesson = await this.lessonRepository.findOne({ id: lessonId });
     lesson.students = [...lesson.students, ...studentIds];
